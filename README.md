@@ -36,8 +36,9 @@
 
 
 ## Сама диаграмма 
+![МПО](https://github.com/user-attachments/assets/d68945e1-6fc9-48df-a4d4-4ec3b6b8f727)
 
-![МПО](https://github.com/user-attachments/assets/a3d9315b-b997-4daf-a1b9-664aa1c7b361)
+
 
 
 # ДК
