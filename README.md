@@ -60,7 +60,8 @@
 - 1.6 Чататель возвращает книгу.
 
 ## Сама диаграмма
-![ДК](https://github.com/user-attachments/assets/75ed2ff3-993f-4898-b441-4a8a8e9152a0)
+![ДК (1)](https://github.com/user-attachments/assets/db253f6c-5d65-441f-b4df-19b752f84fb6)
+
 
 # ДА
 ## Описание
