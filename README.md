@@ -36,7 +36,8 @@
 
 
 ## Сама диаграмма 
-![МПО](https://github.com/user-attachments/assets/d68945e1-6fc9-48df-a4d4-4ec3b6b8f727)
+![МПО](https://github.com/user-attachments/assets/e9a5df2e-90a0-4136-aefc-80622bdd2587)
+
 
 
 
@@ -60,7 +61,8 @@
 - 1.6 Чататель возвращает книгу.
 
 ## Сама диаграмма
-![ДК (1)](https://github.com/user-attachments/assets/db253f6c-5d65-441f-b4df-19b752f84fb6)
+
+![ДК](https://github.com/user-attachments/assets/1dc90a1e-2cba-4dbc-b59b-fc3cbe1e0e7c)
 
 
 # ДА
@@ -83,8 +85,9 @@
 8. Create Appointment Record: Контроллер экземпляров книги создает запись о бронировании (Appointment Record) и возвращает результаты поиска.
 
 ## Сама диаграмма
-![ДА](https://github.com/user-attachments/assets/ea788b23-b93c-49ec-a20c-a91babf9046a)
 
+
+![ДА](https://github.com/user-attachments/assets/d13af07b-3f0d-4d4b-abb5-515e9c6e08be)
 
 
 
