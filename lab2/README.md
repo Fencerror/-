@@ -130,7 +130,8 @@
    4. Создается объект Reservation, и состояние книги обновляется на "зарезервирована".
    5. Обновляется состояние заявки на резервирование.
 ### Диаграмма
-![SD1 drawio](https://github.com/user-attachments/assets/4f688e5e-20b7-49d6-8ccc-936fb2b81293)
+![sd1_finally drawio](https://github.com/user-attachments/assets/0c3df1d6-1f9c-4ce1-b708-19a75ac689a4)
+
 
 
 
