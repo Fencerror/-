@@ -24,7 +24,10 @@
 - identificationAnalysis: boolean  — анализ идентификации читателя.
 - getReaderPreferences: string[*] — получение предпочтений читателя.
 - readerCheckUp: boolean — проверка доступности книги на основе предпочтений читателя и идентификатора, выдача книги.
-
+- BookRezervation():int
+- chooseBookCopy():int
+- getRoom():int
+- updteRezervtionRequest():int
 
 
 3. Интерфейс "IReservable"  
@@ -115,7 +118,8 @@
 - isReserved(): boolean — проверяет, зарезервировано ли место в данный момент.
 
 ## Сама диаграмма.
-![ДК](https://github.com/user-attachments/assets/c6e6db8c-0117-4d9e-9a37-28d80bd5842e)
+![ДК (2)](https://github.com/user-attachments/assets/827c5557-aa66-4c4d-9864-58d6714c425c)
+
 
 
 
