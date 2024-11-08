@@ -242,4 +242,5 @@
         - supervisor: "Кузнецова Мария Анатольевна"
 
 ## Диаграмма
-![ДО](https://github.com/user-attachments/assets/0f88c56e-ac65-48e2-be99-94f14e4ea340)
+![ДО](https://github.com/user-attachments/assets/b259b5cd-3539-4e3c-bb20-6a1f231e846d)
+
