@@ -143,7 +143,8 @@
    3. Для каждого экземпляра проверяется, доступен ли он для выдачи читателю.
    4. Если да, то возвращается true, если нет false.
 ### Диаграмма
-![SD2](https://github.com/user-attachments/assets/6e0fbaec-803a-4301-8118-1fe48ed4fbfd)
+![SD2 drawio](https://github.com/user-attachments/assets/6a67da87-67e7-4bd2-9bc6-78dca4f28240)
+
 
 
 
@@ -158,7 +159,8 @@
 6. Проводится поиск нужной книги.
 7. Если экземпляр книги не тот, обновляются предпочтения и экземпляр книги.
 ### Диаграмма
-![SD3](https://github.com/user-attachments/assets/ca5409ba-ce01-46d4-9230-b478519562c2)
+![SD3 drawio](https://github.com/user-attachments/assets/847be651-7e11-4f1b-a7d6-b5d31ce94b82)
+
 
 
 
