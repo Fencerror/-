@@ -17,7 +17,7 @@ namespace LibrarySystem
 
         public void Work()
         {
-            // Implementation of work
+            // Реализация работы сотрудника
         }
     }
 
@@ -27,12 +27,12 @@ namespace LibrarySystem
 
         public void ServeReader()
         {
-            // Implementation of serveReader
+            // Реализация обслуживания читателя
         }
 
         public void ManageReadingRoom()
         {
-            // Implementation of manageReadingRoom
+            // Реализация управления читальным залом
         }
 
         // Получение списка копий книги
@@ -73,6 +73,64 @@ namespace LibrarySystem
         {
             return new BookCopy(); // Возвращаем копию книги, если она найдена
         }
+
+        // Метод для резервирования книги
+        public Reservation BookReservation(int bookId, Reader reader)
+        {
+            // Выбор копии книги
+            BookCopy bookCopy = chooseBookCopy(bookId);
+            
+            // Получение комнаты для бронирования
+            Room room = getRoom();
+            
+            // Проверка доступности
+            bool isAvailable = checkAvailability();
+            
+            if (isAvailable)
+            {
+                // Создание нового объекта бронирования
+                Reservation reservation = new Reservation
+                {
+                    ReservationId = new Random().Next(1000, 9999),
+                    Reservable = bookCopy,
+                    Reader = reader,
+                    ReservationDate = DateTime.Now
+                };
+                
+                // Обновление запроса на бронирование
+                updateReservationRequest(reservation, bookCopy);
+                
+                return reservation;
+            }
+            else
+            {
+                throw new Exception("Книга недоступна для бронирования.");
+            }
+        }
+
+        private BookCopy chooseBookCopy(int bookId)
+        {
+            // Реализация логики выбора копии книги по идентификатору
+            return new BookCopy { Id = bookId, Title = "Пример Названия", Author = "Пример Автора" };
+        }
+
+        private Room getRoom()
+        {
+            // Логика получения доступной комнаты
+            return new ReadingRoom { Id = 1, Name = "Главный Читальный Зал", Capacity = 50 };
+        }
+
+        private bool checkAvailability()
+        {
+            // Логика проверки доступности копий книги
+            return true;
+        }
+
+        private void updateReservationRequest(Reservation reservation, BookCopy bookCopy)
+        {
+            // Логика обновления запроса на бронирование
+            Console.WriteLine($"Запрос на бронирование копии книги '{bookCopy.Title}' обновлен.");
+        }
     }
 
     public class Service
@@ -93,12 +151,12 @@ namespace LibrarySystem
 
         public void Reserve(Reader reader)
         {
-            // Implementation of reserve
+            // Реализация резервирования
         }
 
         public void CancelReservation(Reader reader)
         {
-            // Implementation of cancelReservation
+            // Реализация отмены резервирования
         }
 
         public bool IsReserved()
@@ -127,13 +185,13 @@ namespace LibrarySystem
 
         public Order PlaceOrder(Book book)
         {
-            // Implementation of placeOrder
+            // Реализация размещения заказа
             return new Order();
         }
 
         public void CancelOrder(Order order)
         {
-            // Implementation of cancelOrder
+            // Реализация отмены заказа
         }
     }
 
@@ -143,12 +201,12 @@ namespace LibrarySystem
 
         public void Confirm()
         {
-            // Implementation of confirm
+            // Реализация подтверждения заказа
         }
 
         public void Cancel()
         {
-            // Implementation of cancel
+            // Реализация отмены заказа
         }
     }
 
@@ -159,12 +217,12 @@ namespace LibrarySystem
 
         public void Open()
         {
-            // Implementation of open
+            // Реализация открытия комнаты
         }
 
         public void Close()
         {
-            // Implementation of close
+            // Реализация закрытия комнаты
         }
     }
 
@@ -174,18 +232,17 @@ namespace LibrarySystem
 
         public void ReserveSeat(Reader reader)
         {
-            // Implementation of reserveSeat
+            // Реализация резервирования места
         }
-
 
         public void ReleaseSeat(Reader reader)
         {
-            // Implementation of releaseSeat
+            // Реализация освобождения места
         }
 
         public void ManageRoom()
         {
-            // Implementation of manageRoom
+            // Реализация управления комнатой
         }
     }
 
@@ -197,12 +254,12 @@ namespace LibrarySystem
 
         public void Reserve(Reader reader)
         {
-            // Implementation of reserve
+            // Реализация резервирования
         }
 
         public void CancelReservation(Reader reader)
         {
-            // Implementation of cancelReservation
+            // Реализация отмены резервирования
         }
 
         public bool IsReserved()
@@ -220,12 +277,12 @@ namespace LibrarySystem
 
         public void Confirm()
         {
-            // Implementation of confirm
+            // Реализация подтверждения бронирования
         }
 
         public void Cancel()
         {
-            // Implementation of cancel
+            // Реализация отмены бронирования
         }
     }
 
@@ -237,12 +294,24 @@ namespace LibrarySystem
         }
     }
 
+    public interface IReservable
+    {
+        void Reserve(Reader reader);
+        void CancelReservation(Reader reader);
+        bool IsReserved();
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            // Example usage
+            // Пример использования
+            Reader reader = new Reader { Id = 1, Name = "Иван Иванов" };
+            LibraryStaff libraryStaff = new LibraryStaff { Id = 101, Name = "Ольга Петрова" };
+            
+            // Резервирование книги
+            Reservation reservation = libraryStaff.BookReservation(123, reader);
+            Console.WriteLine($"Книга зарезервирована с номером бронирования: {reservation.ReservationId}");
         }
     }
 }
-
