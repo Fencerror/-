@@ -34,13 +34,54 @@ namespace LibrarySystem
         {
             // Implementation of manageReadingRoom
         }
+
+        // Получение списка копий книги
+        public List<BookCopy> GetCopies()
+        {
+            // Логика получения копий книги
+            return new List<BookCopy>();
+        }
+
+        // Проверка доступности копий книги
+        public bool CheckAvailability(List<BookCopy> copies, List<Book> books)
+        {
+            foreach (var copy in copies)
+            {
+                if (books.Contains(copy))
+                {
+                    // Логика обработки, если копия книги доступна
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Анализ идентификации читателя
+        public int IdentificationAnalysis(string identification)
+        {
+            return int.Parse(identification);
+        }
+
+        // Получение предпочтений читателя
+        public List<Preferences> GetReaderPreferences()
+        {
+            return new List<Preferences>();
+        }
+
+        // Проверка доступности книги для читателя
+        public BookCopy ReaderCheckUp(Reader reader, List<Preferences> preferences, int idRes)
+        {
+            return new BookCopy(); // Возвращаем копию книги, если она найдена
+        }
     }
 
-    public interface IReservable
+    public class Service
     {
-        void Reserve(Reader reader);
-        void CancelReservation(Reader reader);
-        bool IsReserved();
+        public int GetID(Reader reader)
+        {
+            // Метод для получения идентификатора читателя
+            return reader.Id;
+        }
     }
 
     public class Book : IReservable
@@ -62,9 +103,16 @@ namespace LibrarySystem
 
         public bool IsReserved()
         {
-            // Implementation of isReserved
             return ReservedBy != null;
         }
+    }
+
+    public class BookCopy
+    {
+        // Свойства и методы для копии книги
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
     }
 
     public class Category
@@ -129,6 +177,7 @@ namespace LibrarySystem
             // Implementation of reserveSeat
         }
 
+
         public void ReleaseSeat(Reader reader)
         {
             // Implementation of releaseSeat
@@ -158,7 +207,6 @@ namespace LibrarySystem
 
         public bool IsReserved()
         {
-            // Implementation of isReserved
             return ReservedBy != null;
         }
     }
@@ -178,6 +226,14 @@ namespace LibrarySystem
         public void Cancel()
         {
             // Implementation of cancel
+        }
+    }
+
+    public class Preferences
+    {
+        public void UpdateBookCopy(string bookCopy)
+        {
+            // Метод для обновления информации о предпочтениях читателя
         }
     }
 
