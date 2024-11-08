@@ -47,7 +47,7 @@ namespace LibrarySystem
         {
             foreach (var copy in copies)
             {
-                if (books.Contains(copy))
+                if (books.Exists(b => b.Id == copy.Id))
                 {
                     // Логика обработки, если копия книги доступна
                     return true;
@@ -94,7 +94,9 @@ namespace LibrarySystem
                     ReservationId = new Random().Next(1000, 9999),
                     Reservable = bookCopy,
                     Reader = reader,
-                    ReservationDate = DateTime.Now
+                    ReservationDate = DateTime.Now,
+                    Book = new Book { Id = bookId, Title = "Пример Названия", Author = "Пример Автора" },
+                    Seat = new Seat { SeatNumber = 1, IsAvailable = true }
                 };
                 
                 // Обновление запроса на бронирование
@@ -148,6 +150,7 @@ namespace LibrarySystem
         public string Title { get; set; }
         public string Author { get; set; }
         public Reader ReservedBy { get; set; }
+        public Category Category { get; set; } // Связь между книгой и категорией
 
         public void Reserve(Reader reader)
         {
@@ -176,6 +179,7 @@ namespace LibrarySystem
     public class Category
     {
         public string Name { get; set; }
+        public List<Book> Books { get; set; } = new List<Book>(); // Массив книг --------------------------------------------------------------------------------------------------------------------------------
     }
 
     public class Reader
@@ -274,6 +278,8 @@ namespace LibrarySystem
         public IReservable Reservable { get; set; }
         public Reader Reader { get; set; }
         public DateTime ReservationDate { get; set; }
+        public Book Book { get; set; } // Связь с книго
+        public Seat Seat { get; set; } // Связь с местом
 
         public void Confirm()
         {
