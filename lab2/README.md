@@ -215,14 +215,17 @@
         - name: "НИ ТГУ"
 2. Читальные залы
     - rr1: Reading Room 1
-      - capacity: 34
-        - name: "Зал естественных наук"
+      - id: 68
+      - name: "Зал естественных наук"
+    - capacity: 34
     - rr2: Reading Room 2
-      - capacity: 62
-        - name: "Зал гуманитарный наук"
+      - id: 60
+      - name: "Зал гуманитарный наук"
+    - capacity: 62
     - rr3: Reading Room 3
-      - capacity: 104
+      - id: 40
         - name: "Зал художественной литературы"
+        - capacity: 104
 3. Категории
   - rr1_cat1: Category1
     - name: "Органическая химия"
@@ -238,14 +241,25 @@
     - name: "XX век"
 4. Работники библиотеки
     - rr1_lst1: LibraryStaff
-        - supervisor: "Петрова Анна Сергеевна"
+      - id: 80
+      - name: "Кузнецов Иван Сергеевич"
+      - position: "Специалист по обслуживанию читателей"
+        - supervisor: 95
     - rr2_lst1: LibraryStaff
-        - supervisor: "Сидоров Алексей Викторович"
+      - id: 42
+      - name: "Морозов Дмитрий Олегович"
+      - position: "Библиограф"
+        - supervisor: 99
     - rr3_lst1: LibraryStaff
-        - supervisor: "Кузнецова Мария Анатольевна"
+      - id: 87
+      - name: "Соколова Мария Александровна"
+      - position: "Старший библиотекарь"
+        - supervisor: 65
     - rr3_lst2: LibraryStaff
-        - supervisor: "Кузнецова Мария Анатольевна"
-
+      - id: 49
+      - name: "Орлова Анастасия Петровна"
+      - position: "Библиотекарь"
+        - supervisor: 87
 ## Диаграмма
 ![ДО](https://github.com/user-attachments/assets/b259b5cd-3539-4e3c-bb20-6a1f231e846d)
 
