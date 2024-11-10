@@ -14,31 +14,19 @@ namespace LibrarySystem
         public int Id { get; set; }
         public string Name { get; set; }
         public string Position { get; set; }
-
-        public void Work()
-        {
-            // Реализация работы сотрудника
-        }
+        
     }
 
     public class LibraryStaff : Staff
     {
         public Staff Supervisor { get; set; }
 
-        public void ServeReader()
-        {
-            // Реализация обслуживания читателя
-        }
 
-        public void ManageReadingRoom()
-        {
-            // Реализация управления читальным залом
-        }
 
-        // Метод readerService, соответствующий диаграмме последовательностей
+
         public BookCopy ReaderService(Service service, Reader reader)
         {
-            // Шаг 1: Читатель получает идентификатор
+            // Шаг 1: Читатель получает идентификаторц
             int readerId = service.GetID(reader);
             
             // Шаг 2: Отправка lib=a_staff (пропускаем для этой реализации)
@@ -50,7 +38,7 @@ namespace LibrarySystem
             Preferences preferences = GetReaderPreferences();
             
             // Шаг 5: Выполнение readerCheckUp для поиска новой копии книги
-            BookCopy newBookCopy = ReaderCheckUp(reader, preferences, idRes);
+            BookCopy new_BookCopy = ReaderCheckUp(reader, preferences, idRes);
             
             // Шаг 6: Если найдена новая копия книги, обновляем предпочтения
             if (newBookCopy != null)
@@ -114,10 +102,10 @@ namespace LibrarySystem
         }
 
         // Метод для резервирования книги
-        public Reservation BookReservation(int bookId, Reader reader)
+        public Reservation BookReservation(int BookID)
         {
             // Выбор копии книги
-            BookCopy bookCopy = chooseBookCopy(bookId);
+            BookCopy bookCopy = chooseBookCopy(BookID);
             
             // Получение комнаты для бронирования
             Room room = getRoom();
@@ -139,7 +127,7 @@ namespace LibrarySystem
                 };
                 
                 // Обновление запроса на бронирование
-                updateReservationRequest(reservation, bookCopy);
+                BookCopies.updateReservationRequest(reservation, bookCopy);
                 
                 return reservation;
             }
@@ -154,24 +142,13 @@ namespace LibrarySystem
             // Реализация логики выбора копии книги по идентификатору
             return new BookCopy { Id = bookId, Title = "Пример Названия", Author = "Пример Автора" };
         }
-
+        
         private Room getRoom()
         {
             // Логика получения доступной комнаты
             return new ReadingRoom { Id = 1, Name = "Главный Читальный Зал", Capacity = 50 };
         }
 
-        private bool checkAvailability()
-        {
-            // Логика проверки доступности копий книги
-            return true;
-        }
-
-        private void updateReservationRequest(Reservation reservation, BookCopy bookCopy)
-        {
-            // Логика обновления запроса на бронирование
-            Console.WriteLine($"Запрос на бронирование копии книги '{bookCopy.Title}' обновлен.");
-        }
     }
 
     public class Service
@@ -189,7 +166,7 @@ namespace LibrarySystem
         public string Title { get; set; }
         public string Author { get; set; }
         public Reader ReservedBy { get; set; }
-        public Category Category { get; set; } // Связь между книгой и категорией
+        public Category Category { get; set; } 
 
         public void Reserve(Reader reader)
         {
@@ -207,11 +184,19 @@ namespace LibrarySystem
         }
     }
 
-    public class BookCopy
+    public class BookCopies
     {
         public int Id { get; set; }
         public string Title { get; set; }
         public string Author { get; set; }
+
+        
+        private void updateReservationRequest(Reservation reservation, BookCopy bookCopy)
+        {
+
+            Console.WriteLine($"Запрос на бронирование копии книги '{bookCopy.Title}' обновлен.");
+        }
+        
     }
 
     public class Preferences
