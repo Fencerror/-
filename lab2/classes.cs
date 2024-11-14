@@ -5,117 +5,75 @@ namespace LibrarySystem
 {
     public class Library
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        public string Name {get; set;}
+        public sring Address {get; set;}
+        private List <Room> Rooms {get; set;}
+
+        public Library(string name, string address)
+        {
+            Name = name;
+            Address = address;
+            Rooms = new List<Room>();
+        }
     }
 
-    public class Staff
+public class ReadingRoom
+{
+         public string Name { get; set; }
+         private List<Rooms> room { get; set; }
+
+    public ReadignRoom(string name)
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Position { get; set; }
+        Name = name;
+        rooms = new List<Rooms>();
+    }
+
+    public void AddRoom(Room r)
+    {
+        room.Add(r);
+    }
+
+    public void RemoveRoom(Room r)
+    {
+        room.Remove(r);
+    }
         
+    public List<rooms> GetRoom()
+    {
+        return room;
+    }
+}
+
+public class LibraryStaff
+{
+    public string PhoneNumber {get; set; }
+    
+    private List<Reservation> Rezesvation {get; set;}
+
+    public LibraryStaff (string phoneNumber)
+    {
+        PhoneNumber = phoneNumber;
+        Reservations = new List<Reservation>();
+    }
+    
+    public Reservation BookReservation(string phoneNumber)
+    {
+        PhoneNumber = phoneNumber;
+        Reservation = new List<Reservation>();
     }
 
-    public class LibraryStaff : Staff
+
+    public void BookReservation(Reader r, string complaints, List<preferences> pref)
     {
-        public Staff Supervisor { get; set; }
+        BookCopy = chooseBookCopy(BookID);
+        room = readingRoom.getRoom();
 
-
-
-
-        public BookCopy ReaderService(Service service, Reader reader)
+        foreach (var bookCopy in BookCopies)
         {
-            // Шаг 1: Читатель получает идентификаторц
-            int readerId = service.GetID(reader);
-            
-            // Шаг 2: Отправка lib=a_staff (пропускаем для этой реализации)
-            
-            // Шаг 3: Анализ идентификации
-            string idRes = IdentificationAnalysis(readerId.ToString());
-            
-            // Шаг 4: Получение предпочтений читателя
-            Preferences preferences = GetReaderPreferences();
-            
-            // Шаг 5: Выполнение readerCheckUp для поиска новой копии книги
-            BookCopy new_BookCopy = ReaderCheckUp(reader, preferences, idRes);
-            
-            // Шаг 6: Если найдена новая копия книги, обновляем предпочтения
-            if (newBookCopy != null)
+            var isAvaible = libraryStaff.checkAvaibality();
+            if (isAvaible !=false)
             {
-                UpdatePreferences(preferences);
-            }
-            
-            return newBookCopy;
-        }
-
-        private string IdentificationAnalysis(string identification)
-        {
-            // Анализ идентификации
-            return "id_res";
-        }
-
-        private Preferences GetReaderPreferences()
-        {
-            // Получение предпочтений читателя
-            return new Preferences();
-        }
-
-        private BookCopy ReaderCheckUp(Reader reader, Preferences preferences, string idRes)
-        {
-            // Проверка предпочтений читателя и поиск новой копии книги
-            return new BookCopy { Id = 101, Title = "Пример Названия Копии", Author = "Пример Автора" };
-        }
-
-        private void UpdatePreferences(Preferences preferences)
-        {
-            // Обновление предпочтений
-            preferences.UpdateBookCopy("новая копия книги");
-        }
-
-        // Метод для проверки доступности книги, соответствующий диаграмме checkAvailability
-        public bool CheckAvailability(List<Book> books)
-        {
-            // Получаем список копий книги
-            List<BookCopy> copies = GetCopies();
-            
-            // Проходим по каждой копии
-            foreach (var copy in copies)
-            {
-                // Проверяем, содержится ли копия в списке доступных книг
-                if (books.Exists(b => b.Id == copy.Id))
-                {
-                    // Копия найдена, возвращаем true
-                    return true;
-                }
-            }
-
-            // Копия не найдена, возвращаем false
-            return false;
-        }
-
-        // Получение списка копий книги
-        public List<BookCopy> GetCopies()
-        {
-            // Логика получения копий книги
-            return new List<BookCopy>();
-        }
-
-        // Метод для резервирования книги
-        public Reservation BookReservation(int BookID)
-        {
-            // Выбор копии книги
-            BookCopy bookCopy = chooseBookCopy(BookID);
-            
-            // Получение комнаты для бронирования
-            Room room = getRoom();
-            
-            // Проверка доступности
-            bool isAvailable = checkAvailability();
-            
-            if (isAvailable)
-            {
-                // Создание нового объекта бронирования
+             // Создание нового объекта бронирования
                 Reservation reservation = new Reservation
                 {
                     ReservationId = new Random().Next(1000, 9999),
@@ -137,112 +95,121 @@ namespace LibrarySystem
             }
         }
 
-        private BookCopy chooseBookCopy(int bookId)
+    public bool CheckAvailability(List<Book> books)
+    {
+        Category cat = Category.getCategory(books);
+        // Проходим по каждой копии
+        if (category.checkCategory = true)
         {
-            // Реализация логики выбора копии книги по идентификатору
-            return new BookCopy { Id = bookId, Title = "Пример Названия", Author = "Пример Автора" };
-        }
-        
-        private Room getRoom()
-        {
-            // Логика получения доступной комнаты
-            return new ReadingRoom { Id = 1, Name = "Главный Читальный Зал", Capacity = 50 };
+            foreach (var copy in copies)
+         {
+             // Проверяем, содержится ли копия в списке доступных книг
+              if (books.Exists(b => b.Id == copy.Id))
+             {
+                 // Копия найдена, возвращаем true
+                return true;
+              }
+          }
+
+         // Копия не найдена, возвращаем false
+          return false; 
         }
 
     }
 
-    public class Service
-    {
-        public int GetID(Reader reader)
+
+ public BookCopy ReaderService(Reader reader)
         {
-            // Метод для получения идентификатора читателя
-            return reader.Id;
-        }
-    }
-
-    public class Book : IReservable
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-        public Reader ReservedBy { get; set; }
-        public Category Category { get; set; } 
-
-        public void Reserve(Reader reader)
-        {
-            // Реализация резервирования
-        }
-
-        public void CancelReservation(Reader reader)
-        {
-            // Реализация отмены резервирования
-        }
-
-        public bool IsReserved()
-        {
-            return ReservedBy != null;
-        }
-    }
-
-    public class BookCopies
-    {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Author { get; set; }
-
-        
-        private void updateReservationRequest(Reservation reservation, BookCopy bookCopy)
-        {
-
-            Console.WriteLine($"Запрос на бронирование копии книги '{bookCopy.Title}' обновлен.");
-        }
-        
-    }
-
-    public class Preferences
-    {
-        public void UpdateBookCopy(string bookCopy)
-        {
-            // Метод для обновления информации о предпочтениях читателя
-            Console.WriteLine($"Обновлены предпочтения с новой копией книги: {bookCopy}");
-        }
-    }
-
-    public class Reader
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public Order PlaceOrder(Book book)
-        {
-            // Реализация размещения заказа
-            return new Order();
-        }
-
-        public void CancelOrder(Order order)
-        {
-            // Реализация отмены заказа
-        }
-    }
-
-    public interface IReservable
-    {
-        void Reserve(Reader reader);
-        void CancelReservation(Reader reader);
-        bool IsReserved();
-    }
-
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Reader reader = new Reader { Id = 1, Name = "Иван Иванов" };
-            LibraryStaff libraryStaff = new LibraryStaff { Id = 101, Name = "Ольга Петрова" };
-            Service service = new Service();
+            id_res = identificationAnalysis(identification.string[*]);
+                
+            int readerId = reader.getID();
             
-            // Вызов метода readerService
-            BookCopy bookCopy = libraryStaff.ReaderService(service, reader);
-            Console.WriteLine($"Новая копия книги: {bookCopy?.Title ?? "Копия не найдена"}");
+            string idRes = IdentificationAnalysis(readerId.ToString());
+            
+
+            Preferences preferences = Reader.GetReaderPreferences();
+            
+   
+            BookCopy new_BookCopy = ReaderCheckUp(reader, preferences, idRes);
+            
+
+            if (newBookCopy != null)
+            {
+                reader.UpdatePreferences(preferences);
+            }
+            
+            return newBookCopy;
         }
+
+        private string IdentificationAnalysis(string identification)
+        {
+            // Анализ идентификации
+            return "id_res";
+        }
+
+        
+        private BookCopy ReaderCheckUp(Reader reader, Preferences preferences, string idRes)
+        {
+            // Проверка предпочтений читателя и поиск новой копии книги
+            return new BookCopy { Id = 101, Title = "Пример Названия Копии", Author = "Пример Автора" };
+        }
+
+public class BookCopy : IReservable
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Author { get; set; }
+}
+
+        
+public class Reader
+{
+    public preferences {get; set; }
+    public ID {get; set;}
+
+
+    public getID()
+    { 
+        return ID
     }
+
+    public getPreferences()
+    {
+        return new preferences;
+    }
+
+    
+    public UpdatePreferences(preferences)
+    {
+        preferences = getPrefereces();
+        return preferecnes;
+    }
+}
+
+        
+public class Preferences
+{
+    public string preferences = reader.getReaderPreferences();
+
+    public UpdateBookCopy(preferences)
+    {
+        return reader.getReaderPreferences();
+    }
+}
+
+public class Room
+{
+    public string RoomNumber { get; set; }
+}
+
+        
+public class Seat
+{
+    public int SeatNumber { get; set; }
+    public bool IsAvailable { get; set; }
+}
+        
+public interface IReservable
+{
+    bool IsAvailable();
 }
