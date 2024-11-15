@@ -134,7 +134,8 @@
    4. Создается объект Reservation, и состояние книги обновляется на "зарезервирована".
    5. Обновляется состояние заявки на резервирование.
 ### Диаграмма
-![sd1_finally drawio (1)](https://github.com/user-attachments/assets/28d0c586-02d7-41dc-870b-15543f10cf6b)
+![sd1_finally drawio (1)](https://github.com/user-attachments/assets/83bc661c-755f-45fa-8b92-2d593a30635b)
+
 
 
 
@@ -153,7 +154,8 @@
    3. Для каждого экземпляра проверяется, доступен ли он для выдачи читателю.
    4. Если да, то возвращается true, если нет false.
 ### Диаграмма
-![SD2-finally drawio](https://github.com/user-attachments/assets/99b50790-8274-4738-9e1a-3c6b85c60636)
+![SD2-finally drawio](https://github.com/user-attachments/assets/7d965bcc-d48b-4897-b8e7-01ae73779292)
+
 
 
 
@@ -173,7 +175,8 @@
 6. Проводится поиск нужной книги.
 7. Если экземпляр книги не тот, обновляются предпочтения и экземпляр книги.
 ### Диаграмма
-![SD3_finally drawio](https://github.com/user-attachments/assets/993b1e20-5018-4aa4-a78b-43529cd38ad8)
+![SD3_finally drawio](https://github.com/user-attachments/assets/17a8d421-2b44-4625-90e8-996549adce42)
+
 
 
 
