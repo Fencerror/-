@@ -20,12 +20,12 @@ namespace LibrarySystem
 public class ReadingRoom
 {
          public string Name { get; set; }
-         private List<Rooms> room { get; set; }
+         private room room { get; set; }
 
     public ReadignRoom(string name)
     {
         Name = name;
-        rooms = new List<Rooms>();
+        rooms = new Room();
     }
 
     public void AddRoom(Room r)
@@ -59,7 +59,7 @@ public class LibraryStaff
     public Reservation BookReservation(string phoneNumber)
     {
         PhoneNumber = phoneNumber;
-        Reservation = new List<Reservation>();
+        Reservation = new Reservation();
     }
 
 
@@ -71,10 +71,10 @@ public class LibraryStaff
         foreach (var bookCopy in BookCopies)
         {
             var isAvaible = libraryStaff.checkAvaibality();
-            if (isAvaible !=false)
+            if (isAvaible == true)
             {
              // Создание нового объекта бронирования
-                Reservation reservation = new Reservation
+                Reservation reservation = new (Reservation(r, bookCopy));
                 {
                     ReservationId = new Random().Next(1000, 9999),
                     Reservable = bookCopy,
@@ -99,7 +99,7 @@ public class LibraryStaff
     {
         Category cat = Category.getCategory(books);
         // Проходим по каждой копии
-        if (category.checkCategory = true)
+        if (cat.checkCategory = true)
         {
             foreach (var copy in copies)
          {
@@ -154,6 +154,22 @@ public class LibraryStaff
             return new BookCopy { Id = 101, Title = "Пример Названия Копии", Author = "Пример Автора" };
         }
 
+
+
+public class Reservation
+{
+    public int ReservationId { get; set; }
+    public IReservable Reservable { get; set; }
+    public Reader Reader { get; set; }
+    public DateTime ReservationDate { get; set; }
+    public Seat Seat { get; set; }
+
+    public override string ToString()
+    {
+        return $"Reservation ID: {ReservationId}, Reader: {Reader.ID}, Date: {ReservationDate}, Seat: {Seat.SeatNumber}";
+    }
+}
+        
 public class BookCopy : IReservable
 {
     public int Id { get; set; }
@@ -182,7 +198,7 @@ public class Reader
     public UpdatePreferences(preferences)
     {
         preferences = getPrefereces();
-        return preferecnes;
+        return preferecnes;    
     }
 }
 
